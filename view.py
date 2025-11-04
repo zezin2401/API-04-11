@@ -73,6 +73,11 @@ def imagens(filename):
     """
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
     # Retorna arquivo da pasta configurada para download ou visualização no navegador
+
+@app.route('/uploads/<path:filename>')
+def serve_image(filename):
+    directory = os.path.join(app.root_path, 'static', 'imagens', 'produto')
+    return send_from_directory(directory, filename)
 # ============================================================
 #  ROTAS DE USUÁRIOS
 # ============================================================
